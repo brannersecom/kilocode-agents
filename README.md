@@ -8,6 +8,18 @@
 
 A comprehensive production-ready system combining **91 specialized AI agents**, **15 multi-agent workflow orchestrators**, **47 agent skills**, and **45 development tools** organized into **65 focused, single-purpose plugins** for [Claude Code](https://docs.claude.com/en/docs/claude-code/overview).
 
+## Multi-Tool Support
+
+This repository supports multiple AI coding tools via branches. Check out the branch for your tool and the matching config file is picked up automatically.
+
+| Branch | Tool | Config File | Status |
+|--------|------|-------------|--------|
+| `main` / `claude-code` | Claude Code | `.claude-plugin/marketplace.json` | ✅ Ready |
+| `kilocode` | Kilo Code (VS Code) | `.kilocodemodes` | ✅ PoC Ready |
+| `codex` | OpenAI Codex (VS Code) | TBD | 🚧 Coming Soon |
+
+For Kilo Code setup instructions, see **[docs/kilocode-setup.md](docs/kilocode-setup.md)**.
+
 ## Overview
 
 This unified repository provides everything needed for intelligent automation and multi-agent orchestration across modern software development:
