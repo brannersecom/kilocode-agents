@@ -34,10 +34,19 @@ Use `-Force` to replace an existing central install.
 
 ## 2) Bind a Project to the Central Base
 
-Run inside the target project (or pass `-ProjectPath`):
+Run from inside the target project directory:
 
 ```powershell
-pwsh -File scripts/bind-agent-orchestration-project.ps1 `
+pwsh -File "$HOME\.agent-orchestration\scripts\bind-agent-orchestration-project.ps1" `
+  -ProjectPath "." `
+  -Mode Link `
+  -Force
+```
+
+Or run from any directory and pass the project path:
+
+```powershell
+pwsh -File "$HOME\.agent-orchestration\scripts\bind-agent-orchestration-project.ps1" `
   -ProjectPath "E:\MyProjects\project-a" `
   -CentralPath "$HOME\.agent-orchestration" `
   -Mode Link `
@@ -54,8 +63,8 @@ This creates/updates:
 If you want local Claude plugin files as well:
 
 ```powershell
-pwsh -File scripts/bind-agent-orchestration-project.ps1 `
-  -ProjectPath "E:\MyProjects\project-a" `
+pwsh -File "$HOME\.agent-orchestration\scripts\bind-agent-orchestration-project.ps1" `
+  -ProjectPath "." `
   -CentralPath "$HOME\.agent-orchestration" `
   -Mode Link `
   -EnableClaudeLocal `
@@ -70,13 +79,26 @@ After central base changes:
 2. Re-run bind script in each project with `-Force`, or use the sync wrapper script:
 
 ```powershell
-pwsh -File scripts/sync-agent-orchestration-project.ps1 `
-  -ProjectPath "E:\MyProjects\project-a" `
-  -CentralPath "$HOME\.agent-orchestration" `
+pwsh -File "$HOME\.agent-orchestration\scripts\sync-agent-orchestration-project.ps1" `
+  -ProjectPath "." `
   -Mode Link
 ```
 
 If a project is in `Link` mode, most updates flow automatically; rerunning bind ensures `AGENTS.md` refreshes from the latest registry.
+
+## Common Error
+
+If you see:
+
+```text
+The argument 'scripts/bind-agent-orchestration-project.ps1' is not recognized
+```
+
+you are running the command outside the central repository root. Use the full script path under your central install, for example:
+
+```powershell
+pwsh -File "$HOME\.agent-orchestration\scripts\bind-agent-orchestration-project.ps1" -ProjectPath "." -Mode Link -Force
+```
 
 ## Notes and Tradeoffs
 

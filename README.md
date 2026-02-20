@@ -25,6 +25,15 @@ Tool-specific setup guides:
 - **Codex:** [docs/codex-setup.md](docs/codex-setup.md)
 - **Centralized Install (recommended):** [docs/centralized-setup.md](docs/centralized-setup.md)
 
+Quick bind from a project directory (after central install):
+
+```powershell
+pwsh -File "$HOME\.agent-orchestration\scripts\bind-agent-orchestration-project.ps1" `
+  -ProjectPath "." `
+  -Mode Link `
+  -Force
+```
+
 Adapter generation commands:
 
 ```bash
