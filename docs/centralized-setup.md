@@ -105,3 +105,26 @@ pwsh -File "$HOME\.agent-orchestration\scripts\bind-agent-orchestration-project.
 - `Link` mode is lightweight and recommended for single-machine setups.
 - `Copy` mode is more portable but duplicates files per project.
 - Keeping core outside the project is fine for Codex/Kilo as long as project root has expected adapter files (`AGENTS.md`, `.codex`, `.kilocodemodes`), which the bind script ensures.
+
+## Optional: PowerShell Aliases
+
+Install helper aliases into your PowerShell profile:
+
+```powershell
+pwsh -File "$HOME\.agent-orchestration\scripts\install-agent-orchestration-aliases.ps1" `
+  -CentralPath "$HOME\.agent-orchestration"
+```
+
+Reload profile:
+
+```powershell
+. $PROFILE
+```
+
+Then from any project directory:
+
+```powershell
+ao-bind -ProjectPath "." -Mode Link -Force
+ao-sync -ProjectPath "." -Mode Link
+ao-help
+```

@@ -34,6 +34,15 @@ pwsh -File "$HOME\.agent-orchestration\scripts\bind-agent-orchestration-project.
   -Force
 ```
 
+Optional PowerShell aliases:
+
+```powershell
+pwsh -File "$HOME\.agent-orchestration\scripts\install-agent-orchestration-aliases.ps1" `
+  -CentralPath "$HOME\.agent-orchestration"
+. $PROFILE
+ao-bind -ProjectPath "." -Mode Link -Force
+```
+
 Adapter generation commands:
 
 ```bash
