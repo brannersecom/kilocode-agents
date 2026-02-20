@@ -11,7 +11,6 @@ Outputs:
 from __future__ import annotations
 
 import argparse
-import datetime as dt
 import json
 import re
 from pathlib import Path
@@ -187,9 +186,6 @@ def build_registry(repo_root: Path, catalog: dict) -> dict:
         )
 
     registry = {
-        "generated_at_utc": dt.datetime.now(dt.timezone.utc)
-        .replace(microsecond=0)
-        .isoformat(),
         "source": ".claude-plugin/marketplace.json",
         "marketplace_name": catalog.get("name", ""),
         "marketplace_version": catalog.get("metadata", {}).get("version", ""),

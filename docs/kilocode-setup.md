@@ -56,6 +56,8 @@ python scripts/generate_kilocodemodes.py
 
 The generator converts all agent definitions from the marketplace catalog into `.kilocodemodes`.
 
+CI also validates generated adapter files on pull requests via `.github/workflows/validate-generated-adapters.yml`.
+
 ## Model Notes
 
 Kilo Code is model-agnostic. Configure your provider/model in Kilo settings.

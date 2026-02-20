@@ -31,6 +31,8 @@ python scripts/generate_kilocodemodes.py
 python scripts/generate_codex_assets.py
 ```
 
+Adapter drift is validated in CI via `.github/workflows/validate-generated-adapters.yml`.
+
 ## Overview
 
 This unified repository provides everything needed for intelligent automation and multi-agent orchestration across modern software development:

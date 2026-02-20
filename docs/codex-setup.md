@@ -37,6 +37,8 @@ python scripts/generate_codex_assets.py
 
 The generator reads `.claude-plugin/marketplace.json` as the source of truth.
 
+CI also validates generated adapter files on pull requests via `.github/workflows/validate-generated-adapters.yml`.
+
 ## 4) Tool Adapter Generation Model
 
 This repository uses a single source with per-tool generated adapters:
