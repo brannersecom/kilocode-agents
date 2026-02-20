@@ -115,7 +115,7 @@ Each installed plugin loads **only its specific agents, commands, and skills** i
 - **[Architecture](docs/architecture.md)** - Design principles and patterns
 - **[Claude Code Setup](docs/claude-code-setup.md)** - Branch and marketplace setup for Claude Code
 - **[Kilo Code Setup](docs/kilocode-setup.md)** - Generated mode setup and regeneration workflow
-- **[Codex Setup](docs/codex-setup.md)** - Codex branch plan and adapter targets
+- **[Codex Setup](docs/codex-setup.md)** - Codex adapter generation and setup
 
 ### Quick Links
 
