@@ -2,6 +2,8 @@
 
 This guide explains how to use this repository with Codex-compatible adapter assets.
 
+For shared, cross-project installation under your user profile, see [docs/centralized-setup.md](centralized-setup.md).
+
 ## 1) Clone and Checkout the Codex Branch
 
 ```bash

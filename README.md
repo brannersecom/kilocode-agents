@@ -23,6 +23,7 @@ Tool-specific setup guides:
 - **Claude Code:** [docs/claude-code-setup.md](docs/claude-code-setup.md)
 - **Kilo Code:** [docs/kilocode-setup.md](docs/kilocode-setup.md)
 - **Codex:** [docs/codex-setup.md](docs/codex-setup.md)
+- **Centralized Install (recommended):** [docs/centralized-setup.md](docs/centralized-setup.md)
 
 Adapter generation commands:
 

@@ -2,6 +2,8 @@
 
 This guide explains how to use this repository with the **Kilo Code** VS Code extension.
 
+For shared, cross-project installation under your user profile, see [docs/centralized-setup.md](centralized-setup.md).
+
 ## Install Kilo Code
 
 Install from VS Code Marketplace:
