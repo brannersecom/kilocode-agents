@@ -10,15 +10,26 @@ A comprehensive production-ready system combining **91 specialized AI agents**, 
 
 ## Multi-Tool Support
 
-This repository supports multiple AI coding tools via branches. Check out the branch for your tool and the matching config file is picked up automatically.
+This repository supports multiple AI coding tools via branch-specific adapters generated from a shared plugin catalog.
 
-| Branch | Tool | Config File | Status |
-|--------|------|-------------|--------|
-| `main` / `claude-code` | Claude Code | `.claude-plugin/marketplace.json` | ✅ Ready |
-| `kilocode` | Kilo Code (VS Code) | `.kilocodemodes` | ✅ PoC Ready |
-| `codex` | OpenAI Codex (VS Code) | TBD | 🚧 Coming Soon |
+| Branch | Tool | Config File(s) | Status |
+|--------|------|----------------|--------|
+| `main` | Claude Code | `.claude-plugin/marketplace.json` | ✅ Ready |
+| `copilot/add-kilo-code-compatibility` | Kilo Code (VS Code) | `.kilocodemodes` (generated) | ✅ Ready |
+| `codex` | OpenAI Codex | `AGENTS.md`, `.codex/` (generated) | ✅ Adapter Ready |
 
-For Kilo Code setup instructions, see **[docs/kilocode-setup.md](docs/kilocode-setup.md)**.
+Tool-specific setup guides:
+
+- **Claude Code:** [docs/claude-code-setup.md](docs/claude-code-setup.md)
+- **Kilo Code:** [docs/kilocode-setup.md](docs/kilocode-setup.md)
+- **Codex:** [docs/codex-setup.md](docs/codex-setup.md)
+
+Adapter generation commands:
+
+```bash
+python scripts/generate_kilocodemodes.py
+python scripts/generate_codex_assets.py
+```
 
 ## Overview
 
@@ -102,6 +113,9 @@ Each installed plugin loads **only its specific agents, commands, and skills** i
 - **[Agent Skills](docs/agent-skills.md)** - 47 specialized skills with progressive disclosure
 - **[Usage Guide](docs/usage.md)** - Commands, workflows, and best practices
 - **[Architecture](docs/architecture.md)** - Design principles and patterns
+- **[Claude Code Setup](docs/claude-code-setup.md)** - Branch and marketplace setup for Claude Code
+- **[Kilo Code Setup](docs/kilocode-setup.md)** - Generated mode setup and regeneration workflow
+- **[Codex Setup](docs/codex-setup.md)** - Codex branch plan and adapter targets
 
 ### Quick Links
 

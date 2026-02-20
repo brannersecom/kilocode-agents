@@ -1,84 +1,63 @@
 # Kilo Code Setup Guide
 
-This guide explains how to use the agents in this repository with the **Kilo Code** VS Code extension.
+This guide explains how to use this repository with the **Kilo Code** VS Code extension.
 
-## What is Kilo Code?
+## Install Kilo Code
 
-[Kilo Code](https://kilo.ai) is an open-source AI coding assistant for VS Code that supports custom agent modes, multiple AI providers, and project-specific configuration. It is model-agnostic — you can use any provider and API key (OpenAI, Anthropic, Google Gemini, AWS Bedrock, and more).
+Install from VS Code Marketplace:
 
-Install it from the VS Code Marketplace:
-
-```
+```text
 Extension ID: kilocode.kilo-code
 ```
 
-Or search **"Kilo Code"** in the VS Code Extensions panel (`Ctrl+Shift+X` / `Cmd+Shift+X`).
+Or search for **Kilo Code** in Extensions (`Ctrl+Shift+X` / `Cmd+Shift+X`).
 
-## Using This Repo with Kilo Code
-
-### 1. Clone the repo and check out the `kilocode` branch
+## 1) Clone and Checkout the Kilo-Compatible Branch
 
 ```bash
 git clone https://github.com/byronbranfield/kilocode-agents.git
 cd kilocode-agents
-git checkout kilocode
+git checkout copilot/add-kilo-code-compatibility
 ```
 
-### 2. Open the folder in VS Code
+Note: If your fork uses a different branch name for Kilo compatibility, checkout that branch instead.
+
+## 2) Open in VS Code
 
 ```bash
 code .
 ```
 
-Make sure the Kilo Code extension is installed before opening the folder.
+## 3) Kilo Code Loads Modes from `.kilocodemodes`
 
-### 3. Kilo Code auto-detects custom modes
+Kilo Code automatically loads custom modes from `.kilocodemodes` at repo root.
 
-Kilo Code automatically reads the `.kilocodemodes` file at the project root and loads all custom modes defined there. No additional configuration is required.
+This branch contains a full conversion of marketplace agents into Kilo modes:
 
-### 4. Switch modes in the Kilo Code panel
+- Source of truth: `.claude-plugin/marketplace.json`
+- Generated output: `.kilocodemodes`
+- Current generated mode count: `152`
 
-- Open the Kilo Code panel from the Activity Bar (look for the Kilo Code icon).
-- Click the **mode selector** (shown at the top of the chat panel) to see all available modes.
-- Select a mode such as **Python Pro**, **FastAPI Pro**, or **Django Pro** to activate that agent.
+## 4) Select and Use Modes
 
-The selected mode's `roleDefinition` is injected as the system prompt, giving the AI deep, specialised knowledge for that domain.
+- Open Kilo Code from the activity bar.
+- Open the mode selector in the chat panel.
+- Choose a mode (for example `python-pro`, `backend-architect`, `kubernetes-architect`).
 
-## Model Compatibility
+Kilo injects the selected mode's `roleDefinition` as the active system prompt.
 
-Kilo Code is **model-agnostic**. You can use any supported provider and API key:
+## Regenerating Kilo Modes After Catalog Changes
 
-- Anthropic (Claude 3.5 Sonnet, Claude Opus, etc.)
-- OpenAI (GPT-4o, o1, etc.)
-- Google Gemini
-- AWS Bedrock
-- Local models via Ollama or LM Studio
-- Any OpenAI-compatible endpoint
+When plugins/agents are added or updated, regenerate modes:
 
-Configure your provider and API key in the Kilo Code settings (`Ctrl+,` → search "Kilo Code").
+```bash
+python scripts/generate_kilocodemodes.py
+```
 
-> **Note:** The agent `.md` files in `plugins/` include a `model` field (e.g. `opus`) that reflects the recommended model for Claude Code. Kilo Code ignores this field and uses whichever model you have configured.
+The generator converts all agent definitions from the marketplace catalog into `.kilocodemodes`.
 
-## What's Included in This PoC
+## Model Notes
 
-The `kilocode` branch ships with three agents from the **`python-development`** plugin:
+Kilo Code is model-agnostic. Configure your provider/model in Kilo settings.
 
-| Slug | Name | Description |
-|------|------|-------------|
-| `python-pro` | Python Pro | Master Python 3.12+ with modern features, async programming, and production-ready practices |
-| `fastapi-pro` | FastAPI Pro | Build high-performance async APIs with FastAPI, SQLAlchemy 2.0, and Pydantic V2 |
-| `django-pro` | Django Pro | Master Django 5.x with async views, DRF, Celery, and Django Channels |
-
-These are defined in `.kilocodemodes` at the repo root.
-
-## What's Coming Next
-
-This is a proof of concept. The plan is to port all **65 plugins** (91 agents) from this repository into `.kilocodemodes`, covering:
-
-- JavaScript/TypeScript, Rust, Go, Java, and more
-- Kubernetes, cloud infrastructure, CI/CD
-- Security scanning, code review, observability
-- Full-stack orchestration, AI/ML, data engineering
-- And much more — see the full [Plugin Reference](plugins.md)
-
-Contributions and feedback welcome!
+Agent files in `plugins/*/agents/*.md` can include a `model` frontmatter value for Claude Code guidance. Kilo ignores that field and uses your configured provider/model.
